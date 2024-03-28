@@ -1,0 +1,32 @@
+public class PitanjeSlobodanOdgovor extends Pitanje{
+
+    private int brojLinija;
+    public PitanjeSlobodanOdgovor(String tekstPitanja) {
+        super(tekstPitanja);
+        this.brojLinija = 10;
+    }
+
+    @Override
+    public String vratiZaStampu() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(super.vratiZaStampu()).append("\n");
+        sb.append("-".repeat(Math.max(0, brojLinija)));
+        return sb.toString();
+    }
+
+    @Override
+    public boolean spremnoZaStampu() {
+        if(super.getTekstPitanja() == null || super.getTekstPitanja().isEmpty())
+            return false;
+        return brojLinija>0;
+    }
+
+    public int getBrojLinija() {
+        return brojLinija;
+    }
+
+    public void setBrojLinija(int brojLinija) {
+        this.brojLinija = brojLinija;
+    }
+
+}
