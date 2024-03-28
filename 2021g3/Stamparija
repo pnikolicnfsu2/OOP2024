@@ -1,0 +1,23 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Stamparija {
+    private List<zaStampanje> zaStampanje = new ArrayList<>();
+    public void DodajZaStampanje(zaStampanje z)
+    {
+        this.zaStampanje.add(z);
+    }
+    public void odstampajOdDo (int a, int b)
+    {
+        for(int i=a;i<b;i++)
+        {
+            if(zaStampanje.get(i).spremnoZaStampu()){
+                System.out.println(zaStampanje.get(i).vratiZaStampu());
+            }
+            else
+            {
+                System.out.println("nije spremno za stampu");
+            }
+        }
+    }
+}
