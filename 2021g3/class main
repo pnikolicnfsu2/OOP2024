@@ -1,0 +1,58 @@
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+        // Create a test
+        Test test = new Test();
+        test.setNaslov("Test Title");
+
+        // Create some questions
+        Pitanje question1 = new Pitanje("What is the capital of France?") {
+            @Override
+            public boolean spremnoZaStampu() {
+                return false;
+            }
+        };
+        question1.setRedniBroj(1);
+        question1.setBrojPoena(5);
+
+        PitanjePonudjeniOdgovori question2 = new PitanjePonudjeniOdgovori("Who is the current president of the USA?");
+        question2.setRedniBroj(2);
+        question2.setBrojPoena(10);
+        question2.setPonudjeniOdgovori(List.of("Donald Trump", "Joe Biden", "Barack Obama"));
+
+        PitanjePovezivanje question3 = new PitanjePovezivanje("Match the following countries with their capitals:");
+        question3.setRedniBroj(3);
+        question3.setBrojPoena(15);
+        question3.setKolonaA(List.of("France", "Germany", "Italy"));
+        question3.setKolonaB(List.of("Paris", "Berlin", "Rome"));
+
+        PitanjeSlobodanOdgovor question4 = new PitanjeSlobodanOdgovor("Explain the concept of Object-Oriented Programming.");
+        question4.setRedniBroj(4);
+        question4.setBrojPoena(20);
+        question4.setBrojLinija(15);
+
+        // Add questions to the test
+        test.DodajPitanje(question1);
+        test.DodajPitanje(question2);
+        test.DodajPitanje(question3);
+        test.DodajPitanje(question4);
+
+        // Print the test if it's ready
+        if (test.spremnoZaStampu()) {
+            System.out.println(test.vratiZaStampu());
+        } else {
+            System.out.println("Test is not ready for printing.");
+        }
+
+        // Create a printer and add objects for printing
+        Stamparija printer = new Stamparija();
+        printer.DodajZaStampanje(question1);
+        printer.DodajZaStampanje(question2);
+        printer.DodajZaStampanje(question3);
+        printer.DodajZaStampanje(question4);
+
+        // Print objects from index 1 to 3
+        printer.odstampajOdDo(1, 3);
+    }
+}
