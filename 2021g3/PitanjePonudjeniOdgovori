@@ -1,0 +1,41 @@
+import java.util.List;
+
+public class PitanjePonudjeniOdgovori extends Pitanje{
+    private List<String> ponudjeniOdgovori;
+
+    public PitanjePonudjeniOdgovori(String tekstPitanja) {
+        super(tekstPitanja);
+    }
+
+    public List<String> getPonudjeniOdgovori() {
+        return ponudjeniOdgovori;
+    }
+
+    public void setPonudjeniOdgovori(List<String> ponudjeniOdgovori) {
+        this.ponudjeniOdgovori = ponudjeniOdgovori;
+    }
+
+    @Override
+    public String vratiZaStampu() {
+        StringBuilder pitanje = new StringBuilder(super.vratiZaStampu());
+        pitanje.append("\n");
+        for(String s: ponudjeniOdgovori)
+        {
+            pitanje.append(s).append("\n");
+        }
+        return pitanje.toString();
+    }
+    public void dodajOdgovor(String s)
+    {
+        ponudjeniOdgovori.add(s);
+    }
+    @Override
+    public boolean spremnoZaStampu() {
+        if(super.getTekstPitanja()== null || super.getTekstPitanja().isEmpty())
+        {
+            return false;
+        }
+        return this.ponudjeniOdgovori.size() >= 2;
+    }
+
+}
