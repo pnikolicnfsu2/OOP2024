@@ -1,0 +1,58 @@
+import java.util.List;
+
+public class PitanjePovezivanje extends Pitanje {
+
+    private List<String> kolonaA;
+    private List<String> kolonaB;
+    private int brojPraznihMesta;
+
+    public PitanjePovezivanje(String tekstPitanja) {
+        super(tekstPitanja);
+        brojPraznihMesta = 10;
+    }
+
+    @Override
+    public String vratiZaStampu() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(super.vratiZaStampu()).append("\n");
+        for (int i = 0; i < kolonaA.size(); i++) {
+            sb.append(kolonaA.get(i));
+            for (int j = 0; j < brojPraznihMesta; j++) sb.append(" ");
+
+            sb.append(kolonaB.get(i));
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
+
+
+    @Override
+    public boolean spremnoZaStampu() {
+        if (super.getTekstPitanja() == null || super.getTekstPitanja().isEmpty())
+            return false;
+        return kolonaA.size() >= 1 && kolonaB.size() >= 1;
+    }
+
+    public List<String> getKolonaA() {
+        return kolonaA;
+    }
+
+    public void setKolonaA(List<String> kolonaA) {
+        this.kolonaA = kolonaA;
+    }
+
+    public List<String> getKolonaB() {
+        return kolonaB;
+    }
+
+    public void setKolonaB(List<String> kolonaB) {
+        this.kolonaB = kolonaB;
+    }
+
+    public int getBrojPraznihMesta() {
+        return brojPraznihMesta;
+    }
+
+    public void setBrojPraznihMesta(int brojPraznihMesta) {
+        this.brojPraznihMesta = brojPraznihMesta;
+    }
