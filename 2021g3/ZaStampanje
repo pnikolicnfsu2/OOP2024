@@ -1,0 +1,4 @@
+public interface zaStampanje {
+    String vratiZaStampu();
+    boolean spremnoZaStampu();
+}
